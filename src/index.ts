@@ -1,3 +1,7 @@
+import readline from 'readline';
+
+
+
 /**
  * A class for parsing command-line arguments, flags, options, and passthrough arguments.
  * It processes the raw arguments provided via `process.argv` and categorizes them into
@@ -28,6 +32,11 @@ export default class ArgParser {
    * Stores the raw arguments passed to the command, excluding the first two elements of `process.argv`.
    */
   private _raw: string[];
+
+  /**
+   * Stores data that has been piped into the command.
+   */
+  private _pipe: Promise<string>;
 
   /**
    * Gets the list of arguments (positional parameters).
@@ -64,6 +73,10 @@ export default class ArgParser {
     return this._raw;
   }
 
+  public get pipe(): Promise<string> {
+    return this._pipe;
+  }
+
   /**
    * Constructs an instance of `ArgParser` and initializes the internal properties.
    * Automatically parses the raw arguments provided via `process.argv`.
@@ -74,6 +87,25 @@ export default class ArgParser {
     this._options = {};
     this._passthrough = [];
     this._raw = process.argv.slice(2);
+    this._pipe = new Promise<string>((resolve, reject) => {
+      let piped_data = '';
+      const rl = readline.createInterface({
+        input: process.stdin,
+        terminal: false
+      });
+
+      rl.on('line', (line) => {
+        piped_data += line + '\n';
+      });
+
+      rl.on('close', () => {
+        resolve(piped_data);
+      });
+
+      rl.on('error', (err) => {
+        reject(err);
+      });
+    });
 
     this.parse();
   }
