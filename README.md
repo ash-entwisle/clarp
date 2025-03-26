@@ -11,7 +11,7 @@ TODO
 ## Format
 
 ```bash
-command arg1 -flag1 arg2 --option1 "option1 value" -flag2  -- passthrough arguments
+command arg1 -flag1 arg2 --option1 "option1 value" -flag2  -- passthrough arguments "are useful"
 ```
 
 ### Arguments
@@ -43,4 +43,39 @@ and will be returned as a list of strings for the implementer to use.
 
 ## Usage
 
-TODO
+```ts
+import ArgParser from 'clarp';
+
+// Create a new ArgParser instance
+const p = new ArgParser();
+
+// bobs yer uncle
+console.log(p)
+```
+
+## Testing
+
+Running `npm run test` will test ArgParser with the arguments defined [here](#format). 
+It should give the following output:
+
+```json
+ArgParser {
+  _args: [ 'arg1', 'arg2' ],
+  _flags: [ 'flag1', 'flag2' ],
+  _options: { option1: 'option1 value', option2: 'this is also valid' },
+  _passthrough: [ 'passthrough', 'arguments', 'are useful' ],
+  _raw: [
+    'arg1',
+    '-flag1',
+    'arg2',
+    '--option1',
+    'option1 value',
+    '-flag2',
+    '--option2=this is also valid',
+    '--',
+    'passthrough',
+    'arguments',
+    'are useful'
+  ]
+}
+```

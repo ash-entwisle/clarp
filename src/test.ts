@@ -1,4 +1,4 @@
-import ArgParser from "./index.ts";
+import ArgParser from '../dist/index.js';
 
 let p = new ArgParser();
 console.log(p);
