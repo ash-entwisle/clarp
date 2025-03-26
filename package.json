@@ -2,14 +2,13 @@
   "name": "clarp",
   "version": "1.0.0",
   "description": "Command-Line Argument Parsing",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "bun run ./src/main.ts",
-    "build": "tsc",
+    "build": "tsc src/index.ts -p tsconfig.json",
     "ci": "npm run build && npm run check",
     "lint": "prettier --write .",
     "check": "prettier --check .",
-    "test": "npx ts-node ./src/test.ts"
+    "test": "npx ts-node ./src/test.ts -- arg1 -flag1 arg2 --option1 \"option1 value\" -flag2 --option2=\"this is also valid\" -- passthrough arguments \"are useful\""
   },
   "repository": {
     "type": "git",
