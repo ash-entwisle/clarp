@@ -31,7 +31,7 @@ If you want to pass a value to a flag, you should use an [option](#options) inst
 
 Options are key-value pairs. They are preceded by two dashes `--`.
 They are used to pass a value to a certain feature or option.
-If the value contains spaces, it should be enclosed in quotes (`"`/`\``/`'`)
+If the value contains spaces, it should be enclosed in quotes (`"`/`\`/`'`)
 and will end at the next un-escaped quote.
 If the value is not enclosed in quotes, it will end at the next space.
 
@@ -56,9 +56,10 @@ console.log(p);
 ## Testing
 
 Running `npm run test` will test ArgParser with the arguments defined [here](#format).
-It should give the following output:
+It should say all tests have passed (you can find the tests in `./src/test.ts`) 
+and you should get the following output:
 
-```json
+```txt
 ArgParser {
   _args: [ 'arg1', 'arg2' ],
   _flags: [ 'flag1', 'flag2' ],

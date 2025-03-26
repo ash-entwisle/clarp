@@ -1,10 +1,10 @@
 {
   "name": "clarp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Command-Line Argument Parsing",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc --build . --verbose",
+    "build": "npm run test && tsc --build . --verbose",
     "ci": "npm run build && npm run check",
     "lint": "prettier --write .",
     "check": "prettier --check .",
@@ -29,5 +29,8 @@
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "clarp": "^1.0.0"
   }
 }
