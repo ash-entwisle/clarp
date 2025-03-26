@@ -1,7 +1,5 @@
 import readline from 'readline';
 
-
-
 /**
  * A class for parsing command-line arguments, flags, options, and passthrough arguments.
  * It processes the raw arguments provided via `process.argv` and categorizes them into
@@ -95,7 +93,7 @@ export default class ArgParser {
       let piped_data = '';
       const rl = readline.createInterface({
         input: process.stdin,
-        terminal: false
+        terminal: false,
       });
 
       rl.on('line', (line) => {

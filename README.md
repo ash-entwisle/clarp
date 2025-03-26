@@ -61,7 +61,7 @@ console.log(p);
 ## Testing
 
 Running `npm run test` will test ArgParser with the arguments defined [here](#format).
-It should say all tests have passed (you can find the tests in `./src/test.ts`) 
+It should say all tests have passed (you can find the tests in `./src/test.ts`)
 and you should get the following output:
 
 ```txt

@@ -31,6 +31,5 @@
     "typescript": "^5.8.2",
     "clarp": "^1.0.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
