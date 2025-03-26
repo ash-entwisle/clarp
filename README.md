@@ -50,12 +50,12 @@ import ArgParser from 'clarp';
 const p = new ArgParser();
 
 // bobs yer uncle
-console.log(p)
+console.log(p);
 ```
 
 ## Testing
 
-Running `npm run test` will test ArgParser with the arguments defined [here](#format). 
+Running `npm run test` will test ArgParser with the arguments defined [here](#format).
 It should give the following output:
 
 ```json
