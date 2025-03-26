@@ -4,11 +4,11 @@
   "description": "Command-Line Argument Parsing",
   "main": "dist/index.js",
   "scripts": {
-    "build": "npm run test && tsc --build . --verbose",
-    "ci": "npm run build && npm run check",
+    "build": "tsc --build . --verbose",
+    "ci": "npm run build && npm run test && npm run check",
     "lint": "prettier --write .",
     "check": "prettier --check .",
-    "test": "npx ts-node ./src/test.ts arg1 -flag1 arg2 --option1 \"option1 value\" -flag2 --option2=\"this is also valid\" -- passthrough arguments \"are useful\""
+    "test": "echo \"Hello, World!\" | npx ts-node ./src/test.ts arg1 -flag1 arg2 --option1 \"option1 value\" -flag2 --option2=\"this is also valid\" -- passthrough arguments \"are useful\""
   },
   "repository": {
     "type": "git",
@@ -28,9 +28,9 @@
     "@types/node": "^22.13.13",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "clarp": "^1.0.1"
   },
   "dependencies": {
-    "clarp": "^1.0.0"
   }
 }
