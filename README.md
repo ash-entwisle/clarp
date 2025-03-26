@@ -11,7 +11,7 @@ TODO
 ## Format
 
 ```bash
-command arg1 -flag1 arg2 --option1 "option1 value" -flag2  -- passthrough arguments "are useful"
+echo \"This is Piped Data\" | command arg1 -flag1 arg2 --option1 "option1 value" -flag2  -- passthrough arguments "are useful"
 ```
 
 ### Arguments
@@ -40,6 +40,11 @@ If the value is not enclosed in quotes, it will end at the next space.
 Passthrough arguments are the values that are passed after a `--`.
 They are not processed by the parser
 and will be returned as a list of strings for the implementer to use.
+
+### Piped Data
+
+Piped data is the data that is passed to the command through a pipe (`|`).
+It is not processed by the parser and stored in `this.pipe`.
 
 ## Usage
 

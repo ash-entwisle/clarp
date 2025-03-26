@@ -6,6 +6,7 @@ import readline from 'readline';
  * A class for parsing command-line arguments, flags, options, and passthrough arguments.
  * It processes the raw arguments provided via `process.argv` and categorizes them into
  * different groups such as arguments, flags, options, and passthrough arguments.
+ * See README.md for more information.
  */
 export default class ArgParser {
   /**
@@ -39,21 +40,21 @@ export default class ArgParser {
   private _pipe: Promise<string>;
 
   /**
-   * Gets the list of arguments (positional parameters).
+   * Gets the list of arguments (positional arguments).
    */
   public get args(): string[] {
     return this._args;
   }
 
   /**
-   * Gets the list of flags (single-dash options).
+   * Gets the list of flags (single-dash argumets).
    */
   public get flags(): string[] {
     return this._flags;
   }
 
   /**
-   * Gets the key-value pairs of options (double-dash options).
+   * Gets the key-value pairs of options (double-dash arguments).
    */
   public get options(): Record<string, string> {
     return this._options;
@@ -73,6 +74,9 @@ export default class ArgParser {
     return this._raw;
   }
 
+  /**
+   * Gets the data that has been piped into the command.
+   */
   public get pipe(): Promise<string> {
     return this._pipe;
   }
@@ -111,12 +115,12 @@ export default class ArgParser {
   }
 
   /**
-   * Parses the raw arguments and categorizes them into arguments, flags, options, and passthrough arguments.
-   * Handles the following cases:
-   * - Arguments after `--` are treated as passthrough arguments.
-   * - Double-dash options (`--key=value` or `--key value`) are stored as key-value pairs in the `options` object.
-   * - Single-dash flags (`-f`) are stored in the `flags` array.
-   * - Positional arguments are stored in the `args` array.
+   * Parses the raw arguments and categorizes them into different groups.
+   * - Arguments (positional parameters)
+   * - Flags (single-dash options)
+   * - Options (double-dash options, followed by a value)
+   * - Passthrough arguments (arguments after `--`)
+   * - Piped data (data that has been piped into the command)
    */
   private parse(): void {
     let option: boolean = false;
